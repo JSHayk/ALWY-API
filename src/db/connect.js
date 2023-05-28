@@ -2,6 +2,7 @@ import { createPool } from "mysql2/promise";
 import config from "../config/config.js";
 
 const { name, password, user, host } = config.db;
+console.log("Connect mtav");
 
 const connect = createPool({
   user,

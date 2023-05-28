@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "build": "babel src -d lib",
+    "build": "babel src/app.js -d lib",
     "airtable:dev": "node src/lib/airtable.js",
     "products:airtable:dev": "node src/airtable/products.table.js"
   },
@@ -25,6 +25,9 @@
     "mysql2": "^3.2.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.2",
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.22"
   }

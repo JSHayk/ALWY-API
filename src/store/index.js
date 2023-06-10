@@ -12,6 +12,7 @@ function state() {
 async function sync() {
   try {
     products = await productsTable.getRecords();
+    console.log(products, "products-s")
   } catch (err) {
     throw new Error(err);
   }

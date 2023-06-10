@@ -6,7 +6,9 @@ export default {
     invalidArguments([token]);
     try {
       const table = airtable.getTableByToken(token);
-      return await table.select().firstPage();
+      if (table) {
+        return await table.select().firstPage();
+      }
     } catch (err) {
       console.error(err);
     }

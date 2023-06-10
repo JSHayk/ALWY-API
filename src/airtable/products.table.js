@@ -17,6 +17,7 @@ async function getRecords() {
       });
       return modifyedRecords;
     }
+    return [];
   } catch (err) {
     throw new Error(err);
   }

@@ -7,7 +7,7 @@ const {
 
 async function connect() {
   try {
-    const uri = 'mongodb+srv://user:user@alwy.uderihq.mongodb.net/data?retryWrites=true&w=majority'
+    console.log(uri, "uri");
     await mongoose.connect(uri);
     console.log("Mongo is connected!");
   } catch (err) {

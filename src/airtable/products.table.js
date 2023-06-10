@@ -8,7 +8,6 @@ const { products_token } = config.airtable;
 async function getRecords() {
   try {
     const records = await client.getTableByName(products_token);
-    console.log(records, "records");
     if (records) {
       const modifyedRecords = records.map((record) => {
         if (Object.keys(record).length !== 0) {

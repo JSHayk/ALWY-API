@@ -1,14 +1,17 @@
-import { createPool } from "mysql2/promise";
+import mongoose from "mongoose";
 import config from "../config/config.js";
 
-const { name, password, user, host } = config.db;
-console.log("Connect mtav");
+const {
+  db: { uri },
+} = config;
 
-const connect = createPool({
-  user,
-  password,
-  host,
-  database: name,
-});
+async function connect() {
+  try {
+    await mongoose.connect(uri);
+    console.log("Mongo is connected!");
+  } catch (err) {
+    throw new Error(err);
+  }
+}
 
 export default connect;

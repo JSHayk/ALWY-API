@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import connect from "../db/connect.js";
+import userModel from "../db/models/user.model.js";
 import tokenService from "./token.service.js";
 import userDto from "../dtos/user.dto.js";
 import invalidArguments from "../helpers/invalidArguments.js";
@@ -16,10 +16,11 @@ export default {
         };
       }
       const hashedPassword = await bcrypt.hash(password, 10);
-      await connect.query("INSERT INTO users (email, password) VALUES(?, ?)", [
+      const newUser = await new userModel({
         email,
-        hashedPassword,
-      ]);
+        password: hashedPassword,
+      });
+      newUser.save();
       return {
         sc: 200,
         message: "The user was added",

@@ -1,12 +1,8 @@
-import connect from "../db/connect.js";
+import userModel from "../db/models/user.model.js";
 
 export default async function checkUser(option, value) {
   try {
-    const [users] = await connect.query(
-      `SELECT * FROM users WHERE ${option} = ?`,
-      [value]
-    );
-    const user = users[0];
+    const [user] = await userModel.find({email: value});
     return user;
   } catch (err) {
     throw new Error(err);

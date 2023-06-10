@@ -21,10 +21,7 @@ export default Object.freeze({
     products_token: process.env.AIRTABLE_PRODUCTS_TOKEN,
   },
   db: {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    name: process.env.DB_NAME,
+    uri: process.env.DB_URI
   },
   token: {
     secret_access_token: process.env.SECRET_ACCESS_TOKEN,

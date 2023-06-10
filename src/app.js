@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import connect from "./db/connect.js";
 import config from "./config/config.js";
 import store from "./store/index.js";
 import router from "./routes/router.js";
@@ -33,7 +34,7 @@ app.use((err, req, res) => {
 setInterval(store.sync, +sync_interval);
 (async () => {
   try {
-    // await connect();
+    await connect();
     app.listen(port, () => console.log(`Run on ${port}`));
   } catch (err) {
     throw new Error(err);

@@ -18,8 +18,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: "https://alwy-ui.vercel.app/",
-    credentials: true,
+    origin: "*",
   })
 );
 app.use(cookieParser());

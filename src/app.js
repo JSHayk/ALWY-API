@@ -18,7 +18,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: "*",
+    origin: client_url,
   })
 );
 app.use(cookieParser());
@@ -30,7 +30,8 @@ app.use((err, req, res) => {
   res.status(500).send("Something broke!");
 });
 
-setInterval(store.sync, +sync_interval);
+setInterval(store.sync, sync_interval);
+
 (async () => {
   try {
     await connect();

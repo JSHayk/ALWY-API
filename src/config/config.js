@@ -2,34 +2,35 @@ import airtable from "airtable";
 import dotenv from "dotenv";
 dotenv.config();
 
+import { env } from 'process';
+
 // AirTable Configuration.
 const Airtable = airtable;
 export const base = new Airtable({
-  apiKey: "keyX6f8eUD5mMz9Ip",
-  endpointUrl: "https://api.airtable.com",
-}).base("appJ3eiFlMjCUBqOz");
+  apiKey: env.AIRTABLE_API_KEY,
+  endpointUrl: env.AIRTABLE_ENDPOINT_URL,
+}).base(env.AIRTABLE_BASE_TOKEN);
 
 export default Object.freeze({
   app: {
-    port: 4000,
-    sync_interval: 3000,
-    client_url: "http://localhost:3000",
+    port: env.PORT,
+    sync_interval: Number(env.SYNC_INTERVAL),
+    client_url: env.CLIENT_URL,
   },
   airtable: {
-    api_key: "keyX6f8eUD5mMz9Ip",
-    base_token: "appJ3eiFlMjCUBqOz",
-    products_token: "tblVWCPhemJmHqbwy",
+    api_key: env.AIRTABLE_API_KEY,
+    base_token: env.AIRTABLE_BASE_TOKEN,
+    products_token: env.AIRTABLE_PRODUCTS_TOKEN,
   },
   db: {
-    uri: "mongodb+srv://user:user@alwy.uderihq.mongodb.net/data?retryWrites=true&w=majority",
+    uri: env.DB_URI,
   },
   token: {
-    secret_access_token:
-      "6ed9f14546d1955b6f050748c8125a3f8721787337050099c8c661def5841670f1503ccf39f35467fa97195e4561a88b180e9ca4b1502e2856fb74702d07b9dc",
-    expires_time: "1h",
+    secret_access_token: env.SECRET_ACCESS_TOKEN,
+    expires_time: env.SECRET_ACCESS_TOKEN_EXPIRES_AT,
   },
   storage: {
-    max_age: 30 * 24 * 30 * 30 * 1000,
+    max_age: env.STORAGE_MAX_AGE,
     httpOnly: true,
   },
 });
